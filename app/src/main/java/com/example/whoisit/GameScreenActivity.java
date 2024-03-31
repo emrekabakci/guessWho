@@ -14,7 +14,14 @@ import java.util.Random;
 
 public class GameScreenActivity extends AppCompatActivity {
     private TextView textView;
-    private ImageView imageView;
+    private ImageView andres;
+    private ImageView berenice;
+    private ImageView eduardo;
+    private ImageView enrique;
+    private ImageView ismael;
+    private ImageView juan;
+    private ImageView lorena;
+    private ImageView sebastian;
     private Button button;
     private Button button2;
     private Button button3;
@@ -37,20 +44,50 @@ public class GameScreenActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView2);
         textView.setText(randomChar.getName());
 
-        imageView = findViewById(R.id.imageView2);
+        andres = findViewById(R.id.imageView2);
+        berenice = findViewById(R.id.imageView3);
+        eduardo = findViewById(R.id.imageView4);
+        enrique = findViewById(R.id.imageView5);
+        ismael = findViewById(R.id.imageView6);
+        juan = findViewById(R.id.imageView7);
+        lorena = findViewById(R.id.imageView8);
+        sebastian = findViewById(R.id.imageView9);
 
         button = findViewById(R.id.button2);
         button2 = findViewById(R.id.button3);
         button3 = findViewById(R.id.button4);
-        
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeAndres(imageView);
+                if (!randomChar.isBald()) {
+                    closeCard(eduardo);
+                    closeCard(enrique);
+                    closeCard(sebastian);
+                }
             }
         });
-        
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!randomChar.isBlonde()){
+                    closeCard(berenice);
+                    closeCard(ismael);
+                    closeCard(juan);
+                }
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!randomChar.isHat()){
+                    closeCard(andres);
+                    closeCard(lorena);
+                }
+            }
+        });
 
     }
 
@@ -60,7 +97,7 @@ public class GameScreenActivity extends AppCompatActivity {
         return characterList.get(randomIndex);
     }
 
-    public void closeAndres(View view){
+    public void closeCard(View view) {
         ImageView imageView = (ImageView) view;
         imageView.setImageResource(R.drawable.closed);
     }
